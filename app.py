@@ -21,6 +21,10 @@ with app.app_context():
     db.create_all()
 
 
+@app.get("/")
+def home():
+    return {"message": "API is running"}
+
 @app.post("/store")
 def addStoreDetail():
 
