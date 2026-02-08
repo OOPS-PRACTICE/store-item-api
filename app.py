@@ -6,22 +6,17 @@ import os
 
 
 
-
-
-
 app = Flask(__name__)
 
 @app.route("/")
 def home():
     return "RENDER FLASK APP IS RUNNING"
 
-port = int(os.environ.get("PORT", 5000))
-app.run(host="0.0.0.0", port=port)
-
-
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+
 
 db.init_app(app)
 
@@ -191,6 +186,10 @@ def delete_item(item_id):
     db.session.commit()
 
     return {"message": "Item deleted"}
+
+port = int(os.environ.get("PORT", 5000))
+app.run(host="0.0.0.0", port=port)
+
 
 
 # @app.post("/store")
